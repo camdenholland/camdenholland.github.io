@@ -1,0 +1,538 @@
+import { Github, Linkedin, Mail, ExternalLink, Calendar, Award, Target, ArrowDown } from 'lucide-react';
+import { ImageWithFallback } from './components/figma/ImageWithFallback';
+import { useState } from 'react';
+
+export default function App() {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    message: '',
+  });
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    console.log('Form submitted:', formData);
+    alert('Thank you for your message! I will get back to you soon.');
+    setFormData({ name: '', email: '', message: '' });
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const scrollToSection = (id: string) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  return (
+    <div className="min-h-screen bg-white">
+      {/* Navigation */}
+      <nav className="fixed top-0 left-0 right-0 bg-white/90 backdrop-blur-sm border-b border-gray-200 z-50">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between items-center h-16">
+            <button
+              onClick={() => scrollToSection('hero')}
+              className="text-xl font-semibold text-gray-900 hover:text-blue-600 transition-colors"
+            >
+              Your Name
+            </button>
+            <div className="hidden md:flex space-x-8">
+              {['About', 'Projects', 'Experience', 'Contact'].map((item) => (
+                <button
+                  key={item}
+                  onClick={() => scrollToSection(item.toLowerCase())}
+                  className="text-gray-600 hover:text-gray-900 transition-colors"
+                >
+                  {item}
+                </button>
+              ))}
+            </div>
+            <a
+              href="mailto:your.email@example.com"
+              className="flex items-center space-x-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors text-sm"
+            >
+              <Mail className="w-4 h-4" />
+              <span className="hidden sm:inline">Get in Touch</span>
+            </a>
+          </div>
+        </div>
+      </nav>
+
+      {/* Hero Section */}
+      <section id="hero" className="pt-32 pb-20 px-4 bg-gradient-to-br from-blue-50 via-white to-purple-50">
+        <div className="max-w-6xl mx-auto">
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div>
+              <div className="inline-block px-4 py-2 bg-blue-100 text-blue-700 rounded-full text-sm mb-6">
+                🎓 Computer Science Student
+              </div>
+              <h1 className="text-5xl md:text-6xl mb-6 text-gray-900">
+                Hi, I'm <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Your Name</span>
+              </h1>
+              <p className="text-xl text-gray-600 mb-8 leading-relaxed">
+                Senior Computer Science student passionate about software engineering, machine learning, 
+                and building solutions that make a difference. Graduating May 2026.
+              </p>
+              <div className="flex flex-wrap gap-4 mb-8">
+                <button
+                  onClick={() => scrollToSection('projects')}
+                  className="flex items-center space-x-2 bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors"
+                >
+                  <span>View My Work</span>
+                </button>
+                <a
+                  href="/resume.pdf"
+                  target="_blank"
+                  className="flex items-center space-x-2 border-2 border-gray-300 text-gray-700 px-6 py-3 rounded-lg hover:border-gray-400 hover:bg-gray-50 transition-colors"
+                >
+                  <span>Resume</span>
+                  <ExternalLink className="w-4 h-4" />
+                </a>
+              </div>
+              <div className="flex space-x-4">
+                <a
+                  href="https://github.com/yourusername"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-3 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors"
+                >
+                  <Github className="w-5 h-5 text-gray-700" />
+                </a>
+                <a
+                  href="https://linkedin.com/in/yourname"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-3 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors"
+                >
+                  <Linkedin className="w-5 h-5 text-gray-700" />
+                </a>
+                <a
+                  href="mailto:your.email@example.com"
+                  className="p-3 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors"
+                >
+                  <Mail className="w-5 h-5 text-gray-700" />
+                </a>
+              </div>
+            </div>
+            <div className="relative">
+              <div className="aspect-square rounded-2xl overflow-hidden shadow-2xl">
+                <ImageWithFallback
+                  src="https://images.unsplash.com/photo-1702047048032-e734daa2473d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb2RlJTIwcHJvZ3JhbW1pbmclMjBsYXB0b3AlMjB3b3Jrc3BhY2V8ZW58MXx8fHwxNzcwNzYzNDM3fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
+                  alt="Workspace"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <div className="absolute -bottom-6 -right-6 w-64 h-64 bg-gradient-to-br from-blue-400 to-purple-400 rounded-2xl opacity-20 blur-3xl -z-10"></div>
+            </div>
+          </div>
+          <div className="text-center mt-16">
+            <button
+              onClick={() => scrollToSection('about')}
+              className="inline-flex flex-col items-center text-gray-500 hover:text-gray-700 transition-colors"
+            >
+              <span className="text-sm mb-2">Learn More</span>
+              <ArrowDown className="w-5 h-5 animate-bounce" />
+            </button>
+          </div>
+        </div>
+      </section>
+
+      {/* About Section */}
+      <section id="about" className="py-20 px-4 bg-white">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-4xl mb-12 text-center text-gray-900">About Me</h2>
+          <div className="max-w-3xl mx-auto mb-12">
+            <p className="text-lg text-gray-700 leading-relaxed mb-6">
+              I'm a senior Computer Science student at <span className="text-blue-600 font-semibold">University Name</span>, 
+              expected to graduate in May 2026. My passion lies in creating efficient, scalable software solutions 
+              and exploring the intersection of technology and real-world problem solving.
+            </p>
+            <p className="text-lg text-gray-700 leading-relaxed">
+              Through coursework, personal projects, and internships, I've developed strong skills in full-stack 
+              development, algorithms, and software design. I'm always eager to learn new technologies and take 
+              on challenging problems.
+            </p>
+          </div>
+
+          {/* Skills */}
+          <div className="grid md:grid-cols-3 gap-6">
+            <div className="bg-gradient-to-br from-blue-50 to-blue-100 p-6 rounded-xl">
+              <h3 className="text-lg mb-3 text-gray-900 font-semibold">Languages</h3>
+              <div className="flex flex-wrap gap-2">
+                {['Python', 'Java', 'JavaScript', 'C++', 'SQL'].map((skill) => (
+                  <span key={skill} className="px-3 py-1 bg-white text-gray-700 rounded-full text-sm">
+                    {skill}
+                  </span>
+                ))}
+              </div>
+            </div>
+            <div className="bg-gradient-to-br from-purple-50 to-purple-100 p-6 rounded-xl">
+              <h3 className="text-lg mb-3 text-gray-900 font-semibold">Technologies</h3>
+              <div className="flex flex-wrap gap-2">
+                {['React', 'Node.js', 'Git', 'Docker', 'AWS'].map((skill) => (
+                  <span key={skill} className="px-3 py-1 bg-white text-gray-700 rounded-full text-sm">
+                    {skill}
+                  </span>
+                ))}
+              </div>
+            </div>
+            <div className="bg-gradient-to-br from-pink-50 to-pink-100 p-6 rounded-xl">
+              <h3 className="text-lg mb-3 text-gray-900 font-semibold">Concepts</h3>
+              <div className="flex flex-wrap gap-2">
+                {['Algorithms', 'Data Structures', 'OOP', 'REST APIs', 'Databases'].map((skill) => (
+                  <span key={skill} className="px-3 py-1 bg-white text-gray-700 rounded-full text-sm">
+                    {skill}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Projects Section */}
+      <section id="projects" className="py-20 px-4 bg-gray-50">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-4xl mb-4 text-center text-gray-900">Featured Projects</h2>
+          <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
+            A selection of projects that showcase my technical skills and problem-solving abilities.
+          </p>
+
+          <div className="grid md:grid-cols-2 gap-8">
+            {/* Project 1 */}
+            <div className="bg-white rounded-xl shadow-sm overflow-hidden hover:shadow-lg transition-shadow">
+              <div className="aspect-video overflow-hidden bg-gray-100">
+                <ImageWithFallback
+                  src="https://images.unsplash.com/photo-1703113690885-8caf0c77a7cf?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb2Rlcm4lMjB0ZWNobm9sb2d5JTIwbmV0d29ya3xlbnwxfHx8fDE3NzA3MjE1MTJ8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
+                  alt="Project 1"
+                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                />
+              </div>
+              <div className="p-6">
+                <h3 className="text-xl mb-2 text-gray-900">Task Management App</h3>
+                <p className="text-gray-600 mb-4 leading-relaxed">
+                  A full-stack web application for managing tasks and projects with real-time updates. 
+                  Built with React, Node.js, and MongoDB.
+                </p>
+                <div className="flex flex-wrap gap-2 mb-4">
+                  {['React', 'Node.js', 'MongoDB', 'REST API'].map((tag) => (
+                    <span key={tag} className="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+                <div className="flex gap-3">
+                  <a
+                    href="https://github.com/yourusername/project"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center space-x-2 text-gray-600 hover:text-gray-900 transition-colors"
+                  >
+                    <Github className="w-5 h-5" />
+                    <span className="text-sm">Code</span>
+                  </a>
+                  <a
+                    href="https://example.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center space-x-2 text-blue-600 hover:text-blue-700 transition-colors"
+                  >
+                    <ExternalLink className="w-5 h-5" />
+                    <span className="text-sm">Live Demo</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            {/* Project 2 */}
+            <div className="bg-white rounded-xl shadow-sm overflow-hidden hover:shadow-lg transition-shadow">
+              <div className="aspect-video overflow-hidden bg-gray-100">
+                <ImageWithFallback
+                  src="https://images.unsplash.com/photo-1702047048032-e734daa2473d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb2RlJTIwcHJvZ3JhbW1pbmclMjBsYXB0b3AlMjB3b3Jrc3BhY2V8ZW58MXx8fHwxNzcwNzYzNDM3fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
+                  alt="Project 2"
+                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                />
+              </div>
+              <div className="p-6">
+                <h3 className="text-xl mb-2 text-gray-900">Algorithm Visualizer</h3>
+                <p className="text-gray-600 mb-4 leading-relaxed">
+                  Interactive web tool for visualizing sorting and pathfinding algorithms. 
+                  Helps students understand how algorithms work step-by-step.
+                </p>
+                <div className="flex flex-wrap gap-2 mb-4">
+                  {['JavaScript', 'React', 'CSS', 'Algorithms'].map((tag) => (
+                    <span key={tag} className="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+                <div className="flex gap-3">
+                  <a
+                    href="https://github.com/yourusername/project"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center space-x-2 text-gray-600 hover:text-gray-900 transition-colors"
+                  >
+                    <Github className="w-5 h-5" />
+                    <span className="text-sm">Code</span>
+                  </a>
+                  <a
+                    href="https://example.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center space-x-2 text-blue-600 hover:text-blue-700 transition-colors"
+                  >
+                    <ExternalLink className="w-5 h-5" />
+                    <span className="text-sm">Live Demo</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            {/* Project 3 */}
+            <div className="bg-white rounded-xl shadow-sm overflow-hidden hover:shadow-lg transition-shadow">
+              <div className="aspect-video overflow-hidden bg-gray-100">
+                <ImageWithFallback
+                  src="https://images.unsplash.com/photo-1739298061740-5ed03045b280?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb2xsYWJvcmF0aXZlJTIwd29ya3NwYWNlJTIwdGVhbXdvcmt8ZW58MXx8fHwxNzcwNzYzNDM4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
+                  alt="Project 3"
+                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                />
+              </div>
+              <div className="p-6">
+                <h3 className="text-xl mb-2 text-gray-900">Machine Learning Classifier</h3>
+                <p className="text-gray-600 mb-4 leading-relaxed">
+                  Developed a classification model for predicting customer churn using scikit-learn. 
+                  Achieved 87% accuracy through feature engineering and hyperparameter tuning.
+                </p>
+                <div className="flex flex-wrap gap-2 mb-4">
+                  {['Python', 'scikit-learn', 'Pandas', 'ML'].map((tag) => (
+                    <span key={tag} className="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+                <div className="flex gap-3">
+                  <a
+                    href="https://github.com/yourusername/project"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center space-x-2 text-gray-600 hover:text-gray-900 transition-colors"
+                  >
+                    <Github className="w-5 h-5" />
+                    <span className="text-sm">Code</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Experience Section */}
+      <section id="experience" className="py-20 px-4 bg-white">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-4xl mb-12 text-center text-gray-900">Experience & Education</h2>
+
+          <div className="max-w-3xl mx-auto space-y-8">
+            {/* Education */}
+            <div className="border-l-4 border-blue-600 pl-6 py-2">
+              <div className="flex items-center space-x-2 text-blue-600 mb-2">
+                <Award className="w-5 h-5" />
+                <span className="font-semibold">Education</span>
+              </div>
+              <h3 className="text-2xl text-gray-900 mb-2">Bachelor of Science in Computer Science</h3>
+              <p className="text-lg text-gray-700 mb-1">University Name</p>
+              <div className="flex items-center space-x-2 text-gray-600 mb-3">
+                <Calendar className="w-4 h-4" />
+                <span>Expected May 2026 • GPA: 3.8/4.0</span>
+              </div>
+              <p className="text-gray-700 mb-3">
+                <span className="font-semibold">Relevant Coursework:</span> Data Structures & Algorithms, 
+                Database Systems, Software Engineering, Machine Learning, Operating Systems, 
+                Computer Networks, Web Development
+              </p>
+              <div className="flex flex-wrap gap-2">
+                <span className="px-3 py-1 bg-blue-50 text-blue-700 rounded-full text-sm">Dean's List</span>
+                <span className="px-3 py-1 bg-blue-50 text-blue-700 rounded-full text-sm">CS Club President</span>
+              </div>
+            </div>
+
+            {/* Internship */}
+            <div className="border-l-4 border-purple-600 pl-6 py-2">
+              <div className="flex items-center space-x-2 text-purple-600 mb-2">
+                <Target className="w-5 h-5" />
+                <span className="font-semibold">Experience</span>
+              </div>
+              <h3 className="text-2xl text-gray-900 mb-2">Software Engineering Intern</h3>
+              <p className="text-lg text-gray-700 mb-1">Company Name</p>
+              <div className="flex items-center space-x-2 text-gray-600 mb-3">
+                <Calendar className="w-4 h-4" />
+                <span>Summer 2025</span>
+              </div>
+              <ul className="list-disc list-inside text-gray-700 space-y-2">
+                <li>Developed and deployed features for a web application used by 10,000+ users</li>
+                <li>Collaborated with cross-functional teams using Agile methodologies</li>
+                <li>Improved application performance by 30% through code optimization</li>
+              </ul>
+            </div>
+
+            {/* Optional: Research or TA Experience */}
+            <div className="border-l-4 border-green-600 pl-6 py-2">
+              <div className="flex items-center space-x-2 text-green-600 mb-2">
+                <Award className="w-5 h-5" />
+                <span className="font-semibold">Leadership</span>
+              </div>
+              <h3 className="text-2xl text-gray-900 mb-2">Teaching Assistant</h3>
+              <p className="text-lg text-gray-700 mb-1">Introduction to Programming - University Name</p>
+              <div className="flex items-center space-x-2 text-gray-600 mb-3">
+                <Calendar className="w-4 h-4" />
+                <span>Fall 2025 - Present</span>
+              </div>
+              <ul className="list-disc list-inside text-gray-700 space-y-2">
+                <li>Assist 50+ students with programming assignments and course concepts</li>
+                <li>Hold weekly office hours and grade assignments</li>
+                <li>Develop supplementary learning materials and tutorials</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Contact Section */}
+      <section id="contact" className="py-20 px-4 bg-gray-50">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-4xl mb-4 text-center text-gray-900">Let's Connect</h2>
+          <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
+            I'm currently seeking full-time opportunities starting Summer 2026. 
+            Feel free to reach out if you'd like to chat about technology, opportunities, or collaboration!
+          </p>
+
+          <div className="grid md:grid-cols-2 gap-8">
+            {/* Contact Info */}
+            <div className="space-y-6">
+              <div className="bg-white rounded-xl shadow-sm p-6">
+                <h3 className="text-xl mb-4 text-gray-900">Get In Touch</h3>
+                <div className="space-y-4">
+                  <a
+                    href="mailto:your.email@example.com"
+                    className="flex items-center space-x-3 text-gray-700 hover:text-blue-600 transition-colors"
+                  >
+                    <Mail className="w-5 h-5" />
+                    <span>your.email@example.com</span>
+                  </a>
+                  <a
+                    href="https://github.com/yourusername"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center space-x-3 text-gray-700 hover:text-blue-600 transition-colors"
+                  >
+                    <Github className="w-5 h-5" />
+                    <span>github.com/yourusername</span>
+                  </a>
+                  <a
+                    href="https://linkedin.com/in/yourname"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center space-x-3 text-gray-700 hover:text-blue-600 transition-colors"
+                  >
+                    <Linkedin className="w-5 h-5" />
+                    <span>linkedin.com/in/yourname</span>
+                  </a>
+                </div>
+              </div>
+
+              <div className="bg-gradient-to-br from-blue-50 to-purple-50 border-2 border-blue-200 rounded-xl p-6">
+                <div className="flex items-start space-x-3">
+                  <div className="text-2xl">🎯</div>
+                  <div>
+                    <h3 className="text-lg text-gray-900 mb-2">Looking For</h3>
+                    <div className="space-y-1 text-gray-700">
+                      <p>• Full-time SWE positions</p>
+                      <p>• Internship opportunities</p>
+                      <p>• Collaborative projects</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Contact Form */}
+            <div className="bg-white rounded-xl shadow-sm p-6">
+              <h3 className="text-xl mb-4 text-gray-900">Send a Message</h3>
+              <form onSubmit={handleSubmit} className="space-y-4">
+                <div>
+                  <label htmlFor="name" className="block text-sm text-gray-700 mb-2">
+                    Name
+                  </label>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    required
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all"
+                    placeholder="Your name"
+                  />
+                </div>
+
+                <div>
+                  <label htmlFor="email" className="block text-sm text-gray-700 mb-2">
+                    Email
+                  </label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    required
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all"
+                    placeholder="your.email@example.com"
+                  />
+                </div>
+
+                <div>
+                  <label htmlFor="message" className="block text-sm text-gray-700 mb-2">
+                    Message
+                  </label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    value={formData.message}
+                    onChange={handleChange}
+                    required
+                    rows={4}
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all resize-none"
+                    placeholder="Your message..."
+                  />
+                </div>
+
+                <button
+                  type="submit"
+                  className="w-full bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors"
+                >
+                  Send Message
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="bg-white border-t border-gray-200 py-8 px-4">
+        <div className="max-w-6xl mx-auto text-center text-gray-600">
+          <p className="mb-2">© 2026 Your Name. Built with React & Tailwind CSS.</p>
+          <p className="text-sm">Open to opportunities • Available Summer 2026</p>
+        </div>
+      </footer>
+    </div>
+  );
+}
