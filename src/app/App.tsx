@@ -1,6 +1,32 @@
 import { Github, Linkedin, Mail, ExternalLink, Calendar, Award, Target, ArrowDown } from 'lucide-react';
 import { ImageWithFallback } from './components/figma/ImageWithFallback';
+import { Project } from './components/Project';
 import { useState } from 'react';
+import HeadShot from '../images/HeadShot.jpg';
+
+const NAME = "Camden Holland";
+const EMAIL = "camden@mecch.com";
+const DESCRIPTION = "I am a senior Computer Science and Mathematics student that is passionate about software engineering, machine learning, and creative coding. Graduating in May of 2026.";
+const UNIVERSITY = "University of Northern Iowa";
+
+const LANGUAGES = ['Python', 'Java', 'JavaScript', 'C', 'Racket'];
+const TECHNOLOGIES = ['Git', 'React', 'Node.js', 'Electron'];
+const CONCEPTS = ['Algorithms', 'Data Structures', 'OOP', 'Calculus', 'Linear Algebra', 'Combinatorics'];
+
+const getAbout = () => (
+  <>
+    <p className="text-lg text-gray-700 leading-relaxed mb-6">
+      I'm a senior Computer Science and Mathematics student at the{' '}
+      <span className="text-blue-600 font-semibold">{UNIVERSITY}</span>
+      , expected to graduate in May 2026. After I finish my undergraduate degrees, I am expecting to go to graduate school and get a Master's or PhD in Computer Science. I have applied to multiple universities including MIT, University of Illinois, University of Minnesota, and University of Iowa.
+    </p>
+    <p className="text-lg text-gray-700 leading-relaxed">
+      Through coursework, personal projects, and internships, I've developed skills in full-stack 
+      development, algorithms, and software design. I'm always eager to learn new technologies and take 
+      on challenging problems.
+    </p>
+  </>
+);
 
 export default function App() {
   const [formData, setFormData] = useState({
@@ -40,7 +66,7 @@ export default function App() {
               onClick={() => scrollToSection('hero')}
               className="text-xl font-semibold text-gray-900 hover:text-blue-600 transition-colors"
             >
-              Your Name
+              {NAME}
             </button>
             <div className="hidden md:flex space-x-8">
               {['About', 'Projects', 'Experience', 'Contact'].map((item) => (
@@ -54,7 +80,7 @@ export default function App() {
               ))}
             </div>
             <a
-              href="mailto:your.email@example.com"
+              href={`mailto:${EMAIL}`}
               className="flex items-center space-x-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors text-sm"
             >
               <Mail className="w-4 h-4" />
@@ -69,15 +95,17 @@ export default function App() {
         <div className="max-w-6xl mx-auto">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
-              <div className="inline-block px-4 py-2 bg-blue-100 text-blue-700 rounded-full text-sm mb-6">
-                🎓 Computer Science Student
+              <div className="inline-block px-4 py-2 bg-blue-100 text-blue-700 rounded-full text-sm mb-6 mr-2">
+                Computer Science Student
               </div>
-              <h1 className="text-5xl md:text-6xl mb-6 text-gray-900">
-                Hi, I'm <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Your Name</span>
+              <div className="inline-block px-4 py-2 bg-blue-100 text-blue-700 rounded-full text-sm mb-6 ml-2">
+                Mathematics Student
+              </div>
+              <h1 className="text-5xl md:text-5xl mb-6 text-gray-900">
+                Hi, I'm <span className="text-6xl bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">{NAME}</span>
               </h1>
               <p className="text-xl text-gray-600 mb-8 leading-relaxed">
-                Senior Computer Science student passionate about software engineering, machine learning, 
-                and building solutions that make a difference. Graduating May 2026.
+                {DESCRIPTION}
               </p>
               <div className="flex flex-wrap gap-4 mb-8">
                 <button
@@ -94,10 +122,18 @@ export default function App() {
                   <span>Resume</span>
                   <ExternalLink className="w-4 h-4" />
                 </a>
+                <a
+                  href="/CV.pdf"
+                  target="_blank"
+                  className="flex items-center space-x-2 border-2 border-gray-300 text-gray-700 px-6 py-3 rounded-lg hover:border-gray-400 hover:bg-gray-50 transition-colors"
+                >
+                  <span>Cirriculum Vitae</span>
+                  <ExternalLink className="w-4 h-4" />
+                </a>
               </div>
               <div className="flex space-x-4">
                 <a
-                  href="https://github.com/yourusername"
+                  href="https://github.com/camdenholland"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="p-3 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors"
@@ -105,7 +141,7 @@ export default function App() {
                   <Github className="w-5 h-5 text-gray-700" />
                 </a>
                 <a
-                  href="https://linkedin.com/in/yourname"
+                  href="https://www.linkedin.com/in/camden-holland-88b020306/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="p-3 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors"
@@ -113,7 +149,7 @@ export default function App() {
                   <Linkedin className="w-5 h-5 text-gray-700" />
                 </a>
                 <a
-                  href="mailto:your.email@example.com"
+                  href={`mailto:${EMAIL}`}
                   className="p-3 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors"
                 >
                   <Mail className="w-5 h-5 text-gray-700" />
@@ -123,8 +159,8 @@ export default function App() {
             <div className="relative">
               <div className="aspect-square rounded-2xl overflow-hidden shadow-2xl">
                 <ImageWithFallback
-                  src="https://images.unsplash.com/photo-1702047048032-e734daa2473d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb2RlJTIwcHJvZ3JhbW1pbmclMjBsYXB0b3AlMjB3b3Jrc3BhY2V8ZW58MXx8fHwxNzcwNzYzNDM3fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
-                  alt="Workspace"
+                  src={HeadShot}
+                  alt={`Head Shot - ${NAME}`}
                   className="w-full h-full object-cover"
                 />
               </div>
@@ -148,16 +184,7 @@ export default function App() {
         <div className="max-w-6xl mx-auto">
           <h2 className="text-4xl mb-12 text-center text-gray-900">About Me</h2>
           <div className="max-w-3xl mx-auto mb-12">
-            <p className="text-lg text-gray-700 leading-relaxed mb-6">
-              I'm a senior Computer Science student at <span className="text-blue-600 font-semibold">University Name</span>, 
-              expected to graduate in May 2026. My passion lies in creating efficient, scalable software solutions 
-              and exploring the intersection of technology and real-world problem solving.
-            </p>
-            <p className="text-lg text-gray-700 leading-relaxed">
-              Through coursework, personal projects, and internships, I've developed strong skills in full-stack 
-              development, algorithms, and software design. I'm always eager to learn new technologies and take 
-              on challenging problems.
-            </p>
+            {getAbout()}
           </div>
 
           {/* Skills */}
@@ -165,7 +192,7 @@ export default function App() {
             <div className="bg-gradient-to-br from-blue-50 to-blue-100 p-6 rounded-xl">
               <h3 className="text-lg mb-3 text-gray-900 font-semibold">Languages</h3>
               <div className="flex flex-wrap gap-2">
-                {['Python', 'Java', 'JavaScript', 'C++', 'SQL'].map((skill) => (
+                {LANGUAGES.map((skill) => (
                   <span key={skill} className="px-3 py-1 bg-white text-gray-700 rounded-full text-sm">
                     {skill}
                   </span>
@@ -175,7 +202,7 @@ export default function App() {
             <div className="bg-gradient-to-br from-purple-50 to-purple-100 p-6 rounded-xl">
               <h3 className="text-lg mb-3 text-gray-900 font-semibold">Technologies</h3>
               <div className="flex flex-wrap gap-2">
-                {['React', 'Node.js', 'Git', 'Docker', 'AWS'].map((skill) => (
+                {TECHNOLOGIES.map((skill) => (
                   <span key={skill} className="px-3 py-1 bg-white text-gray-700 rounded-full text-sm">
                     {skill}
                   </span>
@@ -185,7 +212,7 @@ export default function App() {
             <div className="bg-gradient-to-br from-pink-50 to-pink-100 p-6 rounded-xl">
               <h3 className="text-lg mb-3 text-gray-900 font-semibold">Concepts</h3>
               <div className="flex flex-wrap gap-2">
-                {['Algorithms', 'Data Structures', 'OOP', 'REST APIs', 'Databases'].map((skill) => (
+                {CONCEPTS.map((skill) => (
                   <span key={skill} className="px-3 py-1 bg-white text-gray-700 rounded-full text-sm">
                     {skill}
                   </span>
@@ -199,137 +226,21 @@ export default function App() {
       {/* Projects Section */}
       <section id="projects" className="py-20 px-4 bg-gray-50">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-4xl mb-4 text-center text-gray-900">Featured Projects</h2>
+          <h2 className="text-4xl mb-4 text-center text-gray-900">Featured Projects and Publications</h2>
           <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
             A selection of projects that showcase my technical skills and problem-solving abilities.
           </p>
 
           <div className="grid md:grid-cols-2 gap-8">
             {/* Project 1 */}
-            <div className="bg-white rounded-xl shadow-sm overflow-hidden hover:shadow-lg transition-shadow">
-              <div className="aspect-video overflow-hidden bg-gray-100">
-                <ImageWithFallback
-                  src="https://images.unsplash.com/photo-1703113690885-8caf0c77a7cf?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb2Rlcm4lMjB0ZWNobm9sb2d5JTIwbmV0d29ya3xlbnwxfHx8fDE3NzA3MjE1MTJ8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
-                  alt="Project 1"
-                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                />
-              </div>
-              <div className="p-6">
-                <h3 className="text-xl mb-2 text-gray-900">Task Management App</h3>
-                <p className="text-gray-600 mb-4 leading-relaxed">
-                  A full-stack web application for managing tasks and projects with real-time updates. 
-                  Built with React, Node.js, and MongoDB.
-                </p>
-                <div className="flex flex-wrap gap-2 mb-4">
-                  {['React', 'Node.js', 'MongoDB', 'REST API'].map((tag) => (
-                    <span key={tag} className="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm">
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-                <div className="flex gap-3">
-                  <a
-                    href="https://github.com/yourusername/project"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center space-x-2 text-gray-600 hover:text-gray-900 transition-colors"
-                  >
-                    <Github className="w-5 h-5" />
-                    <span className="text-sm">Code</span>
-                  </a>
-                  <a
-                    href="https://example.com"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center space-x-2 text-blue-600 hover:text-blue-700 transition-colors"
-                  >
-                    <ExternalLink className="w-5 h-5" />
-                    <span className="text-sm">Live Demo</span>
-                  </a>
-                </div>
-              </div>
-            </div>
+            <Project title="Project 1" description='Project 1 description' image='' tags={['tag1', 'tag2', 'tag3']} githubUrl='https://github.com/camdenholland/' liveUrl='example.com' />
 
             {/* Project 2 */}
-            <div className="bg-white rounded-xl shadow-sm overflow-hidden hover:shadow-lg transition-shadow">
-              <div className="aspect-video overflow-hidden bg-gray-100">
-                <ImageWithFallback
-                  src="https://images.unsplash.com/photo-1702047048032-e734daa2473d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb2RlJTIwcHJvZ3JhbW1pbmclMjBsYXB0b3AlMjB3b3Jrc3BhY2V8ZW58MXx8fHwxNzcwNzYzNDM3fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
-                  alt="Project 2"
-                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                />
-              </div>
-              <div className="p-6">
-                <h3 className="text-xl mb-2 text-gray-900">Algorithm Visualizer</h3>
-                <p className="text-gray-600 mb-4 leading-relaxed">
-                  Interactive web tool for visualizing sorting and pathfinding algorithms. 
-                  Helps students understand how algorithms work step-by-step.
-                </p>
-                <div className="flex flex-wrap gap-2 mb-4">
-                  {['JavaScript', 'React', 'CSS', 'Algorithms'].map((tag) => (
-                    <span key={tag} className="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm">
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-                <div className="flex gap-3">
-                  <a
-                    href="https://github.com/yourusername/project"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center space-x-2 text-gray-600 hover:text-gray-900 transition-colors"
-                  >
-                    <Github className="w-5 h-5" />
-                    <span className="text-sm">Code</span>
-                  </a>
-                  <a
-                    href="https://example.com"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center space-x-2 text-blue-600 hover:text-blue-700 transition-colors"
-                  >
-                    <ExternalLink className="w-5 h-5" />
-                    <span className="text-sm">Live Demo</span>
-                  </a>
-                </div>
-              </div>
-            </div>
+            <Project title="Project 2" description='Project 2 description' image='' tags={['tag1', 'tag2', 'tag3']} githubUrl='https://github.com/camdenholland/' liveUrl='example.com' />
 
             {/* Project 3 */}
-            <div className="bg-white rounded-xl shadow-sm overflow-hidden hover:shadow-lg transition-shadow">
-              <div className="aspect-video overflow-hidden bg-gray-100">
-                <ImageWithFallback
-                  src="https://images.unsplash.com/photo-1739298061740-5ed03045b280?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb2xsYWJvcmF0aXZlJTIwd29ya3NwYWNlJTIwdGVhbXdvcmt8ZW58MXx8fHwxNzcwNzYzNDM4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
-                  alt="Project 3"
-                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                />
-              </div>
-              <div className="p-6">
-                <h3 className="text-xl mb-2 text-gray-900">Machine Learning Classifier</h3>
-                <p className="text-gray-600 mb-4 leading-relaxed">
-                  Developed a classification model for predicting customer churn using scikit-learn. 
-                  Achieved 87% accuracy through feature engineering and hyperparameter tuning.
-                </p>
-                <div className="flex flex-wrap gap-2 mb-4">
-                  {['Python', 'scikit-learn', 'Pandas', 'ML'].map((tag) => (
-                    <span key={tag} className="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm">
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-                <div className="flex gap-3">
-                  <a
-                    href="https://github.com/yourusername/project"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center space-x-2 text-gray-600 hover:text-gray-900 transition-colors"
-                  >
-                    <Github className="w-5 h-5" />
-                    <span className="text-sm">Code</span>
-                  </a>
-                </div>
-              </div>
-            </div>
+            <Project title="Project 3" description='Project 3 description' image='' tags={['tag1', 'tag2', 'tag3']} githubUrl='https://github.com/camdenholland/' liveUrl='example.com' />
+
           </div>
         </div>
       </section>

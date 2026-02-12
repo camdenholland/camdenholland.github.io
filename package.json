@@ -8,7 +8,7 @@
     "start": "vite --open",
     "build": "vite build",
     "dev": "concurrently \"vite\" \"wait-on http://localhost:5173 && \\\"C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe\\\" --auto-open-devtools-for-tabs http://localhost:5173\"",
-    "deploy": "gh-pages -d build",
+    "deploy": "gh-pages -d dist",
     "predeploy": "npm run build"
   },
   "dependencies": {
