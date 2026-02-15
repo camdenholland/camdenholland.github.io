@@ -483,8 +483,7 @@ export default function App() {
       {/* Footer */}
       <footer className="bg-white border-t border-gray-200 py-8 px-4">
         <div className="max-w-6xl mx-auto text-center text-gray-600">
-          <p className="mb-2">© 2026 Your Name. Built with React & Tailwind CSS.</p>
-          <p className="text-sm">Open to opportunities • Available Summer 2026</p>
+          <p className="mb-2">© 2026 Camden Holland. Built with React & Tailwind CSS.</p>
         </div>
       </footer>
     </div>
