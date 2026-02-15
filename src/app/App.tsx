@@ -252,63 +252,109 @@ export default function App() {
 
           <div className="max-w-3xl mx-auto space-y-8">
             {/* Education */}
+                {/* Computer Science */}
             <div className="border-l-4 border-blue-600 pl-6 py-2">
               <div className="flex items-center space-x-2 text-blue-600 mb-2">
                 <Award className="w-5 h-5" />
                 <span className="font-semibold">Education</span>
               </div>
               <h3 className="text-2xl text-gray-900 mb-2">Bachelor of Science in Computer Science</h3>
-              <p className="text-lg text-gray-700 mb-1">University Name</p>
+              <p className="text-lg text-gray-700 mb-1">{UNIVERSITY}</p>
               <div className="flex items-center space-x-2 text-gray-600 mb-3">
                 <Calendar className="w-4 h-4" />
-                <span>Expected May 2026 • GPA: 3.8/4.0</span>
+                <span>Expected May 2026 • GPA: FILL THIS IN/4.0</span>
               </div>
               <p className="text-gray-700 mb-3">
-                <span className="font-semibold">Relevant Coursework:</span> Data Structures & Algorithms, 
-                Database Systems, Software Engineering, Machine Learning, Operating Systems, 
-                Computer Networks, Web Development
+                <span className="font-semibold">Relevant Coursework:</span> Data Structures, Operating Systems, 
+                Software Verification and Validation, Algorithms, Programming Languages, Embedded Systems, 
+                Software Engineering, Compilers, UI Design
               </p>
               <div className="flex flex-wrap gap-2">
                 <span className="px-3 py-1 bg-blue-50 text-blue-700 rounded-full text-sm">Dean's List</span>
-                <span className="px-3 py-1 bg-blue-50 text-blue-700 rounded-full text-sm">CS Club President</span>
+                <span className="px-3 py-1 bg-blue-50 text-blue-700 rounded-full text-sm">Completed Undergraduate Research</span>
+              </div>
+            </div>
+                
+                {/* Mathematics */}
+            <div className="border-l-4 border-blue-600 pl-6 py-2">
+              <div className="flex items-center space-x-2 text-blue-600 mb-2">
+                <Award className="w-5 h-5" />
+                <span className="font-semibold">Education</span>
+              </div>
+              <h3 className="text-2xl text-gray-900 mb-2">Bachelor of Arts in Mathematics</h3>
+              <p className="text-lg text-gray-700 mb-1">{UNIVERSITY}</p>
+              <div className="flex items-center space-x-2 text-gray-600 mb-3">
+                <Calendar className="w-4 h-4" />
+                <span>Expected May 2026 • GPA: FILL THIS IN/4.0</span>
+              </div>
+              <p className="text-gray-700 mb-3">
+                <span className="font-semibold">Relevant Coursework:</span> Calculus I, II, & III, Combinatorics, 
+                Linear Algebra, Probability & Statistics, Modern Algebra I & II, Discrete and Argumentative Mathematics, 
+                Dynamical Systems
+              </p>
+              <div className="flex flex-wrap gap-2">
+                <span className="px-3 py-1 bg-blue-50 text-blue-700 rounded-full text-sm">Dean's List</span>
+                <span className="px-3 py-1 bg-blue-50 text-blue-700 rounded-full text-sm">Completed Undergraduate Research</span>
               </div>
             </div>
 
-            {/* Internship */}
+            {/* Internships */}
             <div className="border-l-4 border-purple-600 pl-6 py-2">
               <div className="flex items-center space-x-2 text-purple-600 mb-2">
                 <Target className="w-5 h-5" />
                 <span className="font-semibold">Experience</span>
               </div>
-              <h3 className="text-2xl text-gray-900 mb-2">Software Engineering Intern</h3>
-              <p className="text-lg text-gray-700 mb-1">Company Name</p>
+              <h3 className="text-2xl text-gray-900 mb-2">Software Development Intern</h3>
+              <p className="text-lg text-gray-700 mb-1">Musco Sports Lighting</p>
               <div className="flex items-center space-x-2 text-gray-600 mb-3">
                 <Calendar className="w-4 h-4" />
                 <span>Summer 2025</span>
               </div>
               <ul className="list-disc list-inside text-gray-700 space-y-2">
-                <li>Developed and deployed features for a web application used by 10,000+ users</li>
-                <li>Collaborated with cross-functional teams using Agile methodologies</li>
-                <li>Improved application performance by 30% through code optimization</li>
+                <li>Contributed to full-stack development of an internal application using JavaScript, Python, 
+                  HTML, and CSS. Worked with Electron, React.js, and Node.js to expand and modernize
+                  existing code. </li>
+                <li>Collaborated through Figma, FigJam, Git, and Microsoft Azure</li>
+                <li>Gaining experience in UI design principles, including layout and color palette selection.</li>
               </ul>
             </div>
 
-            {/* Optional: Research or TA Experience */}
+            <div className="border-l-4 border-purple-600 pl-6 py-2">
+              <div className="flex items-center space-x-2 text-purple-600 mb-2">
+                <Target className="w-5 h-5" />
+                <span className="font-semibold">Experience</span>
+              </div>
+              <h3 className="text-2xl text-gray-900 mb-2">Summer Dependent/Intern</h3>
+              <p className="text-lg text-gray-700 mb-1">Musco Sports Lighting</p>
+              <div className="flex items-center space-x-2 text-gray-600 mb-3">
+                <Calendar className="w-4 h-4" />
+                <span>Summer 2023 - Winter 2025</span>
+              </div>
+              <ul className="list-disc list-inside text-gray-700 space-y-2">
+                <li>Programmed customized light shows for clients ranging from high schools to major venues 
+                  like NFL and MLB stadiums.</li>
+                <li>Collaborated with engineers to design and synchronize lighting effects to music, create 
+                  event-driven light sequences, and configure standard lighting functions. </li>
+                <li>Gained hands-on experience with hardware, networking, and cross-departmental collaboration
+                  with teams such as Sales and Engineering.</li>
+              </ul>
+            </div>
+
+            {/* TA Experience */}
             <div className="border-l-4 border-green-600 pl-6 py-2">
               <div className="flex items-center space-x-2 text-green-600 mb-2">
                 <Award className="w-5 h-5" />
                 <span className="font-semibold">Leadership</span>
               </div>
               <h3 className="text-2xl text-gray-900 mb-2">Teaching Assistant</h3>
-              <p className="text-lg text-gray-700 mb-1">Introduction to Programming - University Name</p>
+              <p className="text-lg text-gray-700 mb-1">Data Structures - University of Northern Iowa</p>
               <div className="flex items-center space-x-2 text-gray-600 mb-3">
                 <Calendar className="w-4 h-4" />
-                <span>Fall 2025 - Present</span>
+                <span>Spring 2025</span>
               </div>
               <ul className="list-disc list-inside text-gray-700 space-y-2">
-                <li>Assist 50+ students with programming assignments and course concepts</li>
-                <li>Hold weekly office hours and grade assignments</li>
-                <li>Develop supplementary learning materials and tutorials</li>
+                <li>Assist students with programming assignments and course concepts</li>
+                <li>Work closely with the professor to fully understand the topics</li>
               </ul>
             </div>
           </div>
@@ -320,8 +366,7 @@ export default function App() {
         <div className="max-w-4xl mx-auto">
           <h2 className="text-4xl mb-4 text-center text-gray-900">Let's Connect</h2>
           <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
-            I'm currently seeking full-time opportunities starting Summer 2026. 
-            Feel free to reach out if you'd like to chat about technology, opportunities, or collaboration!
+            I'm currently looking for internship opportunities for Summer 2026. Feel free to reach out!
           </p>
 
           <div className="grid md:grid-cols-2 gap-8">
@@ -331,29 +376,29 @@ export default function App() {
                 <h3 className="text-xl mb-4 text-gray-900">Get In Touch</h3>
                 <div className="space-y-4">
                   <a
-                    href="mailto:your.email@example.com"
+                    href={`mailto:${EMAIL}`}
                     className="flex items-center space-x-3 text-gray-700 hover:text-blue-600 transition-colors"
                   >
                     <Mail className="w-5 h-5" />
-                    <span>your.email@example.com</span>
+                    <span>{EMAIL}</span>
                   </a>
                   <a
-                    href="https://github.com/yourusername"
+                    href="https://github.com/camdenholland"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center space-x-3 text-gray-700 hover:text-blue-600 transition-colors"
                   >
                     <Github className="w-5 h-5" />
-                    <span>github.com/yourusername</span>
+                    <span>github.com/camdenholland</span>
                   </a>
                   <a
-                    href="https://linkedin.com/in/yourname"
+                    href="https://linkedin.com/in/camden-holland-88b020306"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center space-x-3 text-gray-700 hover:text-blue-600 transition-colors"
                   >
                     <Linkedin className="w-5 h-5" />
-                    <span>linkedin.com/in/yourname</span>
+                    <span>linkedin.com/in/camden-holland-88b020306</span>
                   </a>
                 </div>
               </div>
@@ -364,9 +409,7 @@ export default function App() {
                   <div>
                     <h3 className="text-lg text-gray-900 mb-2">Looking For</h3>
                     <div className="space-y-1 text-gray-700">
-                      <p>• Full-time SWE positions</p>
                       <p>• Internship opportunities</p>
-                      <p>• Collaborative projects</p>
                     </div>
                   </div>
                 </div>
